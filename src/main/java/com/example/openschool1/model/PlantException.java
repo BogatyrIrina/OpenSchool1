@@ -1,5 +1,8 @@
 package com.example.openschool1.model;
 
+import com.example.openschool1.annotation.Throw;
+
+@Throw
 public class PlantException extends RuntimeException{
 
     public PlantException() {

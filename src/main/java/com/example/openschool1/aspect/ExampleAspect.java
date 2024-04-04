@@ -28,4 +28,8 @@ public class ExampleAspect {
         log.info("after method info");
     }
 
+    @Before("execution(* com.example.openschool1.model.Info.method2())")
+    public void beforePointcutMethod2Call(){
+        System.out.println("Метод2 вызван из метода1");
+    }
 }
