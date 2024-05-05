@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  plant-db:
+    image: 'postgres:13.1-alpine'
+    ports:
+      - "45533:5432"
+    container_name: plant-db
+    environment:
+      - POSTGRES_USER=openSchool1
+      - POSTGRES_PASSWORD=openSchool1
+      - POSTGRES_DB=openSchool1

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: OpenSchool1
+  datasource:
+    url: jdbc:postgresql://localhost:45533/openSchool1
+    username: openSchool1
+    password: openSchool1
+    driverClassName: org.postgresql.Driver
+server:
+  port: 8081
