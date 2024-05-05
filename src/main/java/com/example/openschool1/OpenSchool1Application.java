@@ -2,6 +2,7 @@ package com.example.openschool1;
 
 import com.example.openschool1.model.Info;
 import com.example.openschool1.service.impl.PlantServiceImpl;
+import com.example.openschool1.utils.UserContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,9 @@ public class OpenSchool1Application {
     @EventListener(ApplicationReadyEvent.class)
     public void onReady() {
         info.method1();
+
+        UserContext.setUsername("admin");
+        plantService.getPlantByName("Роза");
 
 //        UserContext.setUsername("admin");
 //        plantService.addPlant(new Plant("Роза", "Цветок"));

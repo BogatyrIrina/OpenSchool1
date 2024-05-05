@@ -14,23 +14,31 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = TableConstant.PLANT_NAME)
-@Entity
+import java.time.LocalDateTime;
+
+@Table(name = TableConstant.TRACK_TIME_METHOD_NAME)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Plant {
+@Entity
+public class TrackTimeMethod {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = ColumnConstant.ID)
     private Long id;
 
-    @Column(name = ColumnConstant.NAME)
-    private String name;
+    @Column(name = ColumnConstant.CLASS_NAME)
+    private String className;
 
-    @Column(name = ColumnConstant.TYPE)
-    private String type;
+    @Column(name = ColumnConstant.METHOD_NAME)
+    private String methodName;
+
+    @Column(name = ColumnConstant.EXECUTION_TIME)
+    private Long executionTime;
+
+    @Column(name = ColumnConstant.CALL_TIME)
+    private LocalDateTime callTime;
 }

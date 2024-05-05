@@ -8,3 +8,5 @@ spring:
     driverClassName: org.postgresql.Driver
 server:
   port: 8081
+
+aspect.enabled: true
