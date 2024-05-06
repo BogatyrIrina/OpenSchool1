@@ -1,7 +1,7 @@
 package com.example.openschool1.aspect;
 
 import com.example.openschool1.annotation.PreInvoke;
-import com.example.openschool1.model.PlantException;
+import com.example.openschool1.exception.PlantException;
 import com.example.openschool1.model.RoleType;
 import com.example.openschool1.utils.UserContext;
 import org.aspectj.lang.annotation.Aspect;

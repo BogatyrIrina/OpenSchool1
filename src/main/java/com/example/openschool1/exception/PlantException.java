@@ -1,4 +1,4 @@
-package com.example.openschool1.model;
+package com.example.openschool1.exception;
 
 import com.example.openschool1.annotation.Throw;
 
