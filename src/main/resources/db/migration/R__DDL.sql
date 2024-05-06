@@ -1,6 +1,6 @@
 CREATE TABLE plant (
     id serial PRIMARY KEY,
-    name varchar(128) not null,
+    name varchar(128) not null unique,
     type varchar(128) not null
 );
 CREATE TABLE track_time_method (

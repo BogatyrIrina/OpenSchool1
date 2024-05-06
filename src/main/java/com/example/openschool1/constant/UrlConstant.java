@@ -11,12 +11,9 @@ import static com.example.openschool1.constant.SymbolConstant.SLASH;
 public final class UrlConstant {
     public static final String PLANTS_URL = SLASH + "plants";
     public static final String NAME_PATH_VARIABLE = "name";
-    public static final String NAME_PATH_VARIABLE_URL  =
-            OPENING_CURLY_BRACE + NAME_PATH_VARIABLE
-            + CLOSING_CURLY_BRACE ;
+    public static final String NAME_URL = SLASH + NAME_PATH_VARIABLE;
     public static final String TYPE_PATH_VARIABLE = "type";
-    public static final String TYPE_PATH_VARIABLE_URL  = OPENING_CURLY_BRACE
-            + TYPE_PATH_VARIABLE + CLOSING_CURLY_BRACE ;
+    public static final String TYPE_URL = SLASH + TYPE_PATH_VARIABLE;
     public static final String ALL_URL = SLASH + "all";
     public static final String EXECUTION_TIME_URL = SLASH + "execution_time";
     public static final String CLASS_NAME_PATH_VARIABLE = "className";
@@ -28,3 +25,4 @@ public final class UrlConstant {
     public static final String AVERAGE_URL = SLASH + "average";
     public static final String TOTAL_URL = SLASH + "total";
 }
+

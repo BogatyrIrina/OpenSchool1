@@ -17,21 +17,15 @@ import java.time.LocalDateTime;
 @Aspect
 @Slf4j
 @RequiredArgsConstructor
-//@ConditionalOnProperty(
-//        value = "aspect.enabled",
-//        havingValue = "true"
-//)
+@ConditionalOnProperty(
+        value = "aspect.enabled",
+        havingValue = "true"
+)
 public class TrackTimeAspect {
-
     private final TrackTimeMethodService service;
 
-    @Pointcut("execution(@com.example.openschool1.annotation.TrackTime public void get*(..)) ")
-    public void pointCutGet() {
-    }
-
-    @Around("pointCutGet()")
+    @Around("execution(@com.example.openschool1.annotation.TrackTime public * get*(..))")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-
         long startTime = System.currentTimeMillis();
 
         String methodName = proceedingJoinPoint.getSignature().getName();
@@ -46,8 +40,12 @@ public class TrackTimeAspect {
 
         service.add(
                 TrackTimeMethod.builder()
-                        .className(proceedingJoinPoint.getTarget().getClass().getCanonicalName())
-                        .methodName(methodName)
+                        .className(
+                                proceedingJoinPoint
+                                        .getTarget()
+                                        .getClass()
+                                        .getCanonicalName()
+                        ).methodName(methodName)
                         .callTime(LocalDateTime.now())
                         .executionTime(executionTime)
                         .build()

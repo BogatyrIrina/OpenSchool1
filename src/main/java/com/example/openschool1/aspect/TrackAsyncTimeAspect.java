@@ -26,7 +26,7 @@ public class TrackAsyncTimeAspect {
 
     private final TrackTimeMethodService service;
 
-    @Around("execution(@com.example.openschool1.annotation.TrackAsyncTime public void add*(..)) ")
+    @Around("execution(@com.example.openschool1.annotation.TrackAsyncTime public void add*(..))")
     public Object trackTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
         long startTime = System.currentTimeMillis();
@@ -36,26 +36,30 @@ public class TrackAsyncTimeAspect {
 
         log.info("Выполнение метода {} с аргументами {}", methodName, methodArgs);
 
-        Object result = proceedingJoinPoint.proceed();
+        return CompletableFuture.runAsync(() -> {
+                    try {
+                        log.info("Асинхронный запуск");
+                        var result = proceedingJoinPoint.proceed();
+                        long executionTime = System.currentTimeMillis() - startTime;
 
-        CompletableFuture future = (CompletableFuture) result;
-        future.thenAccept(
-                f -> {
-                    long executionTime = System.currentTimeMillis() - startTime;
+                        service.add(
+                                TrackTimeMethod.builder()
+                                        .className(
+                                                proceedingJoinPoint.getTarget()
+                                                        .getClass()
+                                                        .getCanonicalName()
+                                        ).methodName(methodName)
+                                        .callTime(LocalDateTime.now())
+                                        .executionTime(executionTime)
+                                        .build()
+                        );
 
-                    service.add(
-                            TrackTimeMethod.builder()
-                                    .className(proceedingJoinPoint.getTarget().getClass().getCanonicalName())
-                                    .methodName(methodName)
-                                    .callTime(LocalDateTime.now())
-                                    .executionTime(executionTime)
-                                    .build()
-                    );
-
-                    log.info("Метод {} выполнился за {} мс с результатом {}",
-                            methodName, executionTime, result);
+                        log.info("Метод {} выполнился за {} мс с результатом {}",
+                                methodName, executionTime, result);
+                    } catch (Throwable e) {
+                        log.error("Ошибка Async", e);
+                    }
                 }
         );
-        return result;
     }
 }

@@ -6,8 +6,8 @@ import com.example.openschool1.model.Plant;
 import java.util.List;
 
 public interface PlantService {
-    void addPlant(@Valid Plant plant);
-    void addPlants(@Valid List<Plant> newPlants);
-    Plant getPlantByName(String name);
-    List<Plant> getPlantByType(String type);
+    void add(@Valid Plant plant);
+    void add(@Valid List<Plant> newPlants);
+    Plant getByName(String name);
+    List<Plant> getByType(String type);
 }

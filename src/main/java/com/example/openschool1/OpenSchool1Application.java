@@ -25,7 +25,7 @@ public class OpenSchool1Application {
         info.method1();
 
         UserContext.setUsername("admin");
-        plantService.getPlantByName("Роза");
+        plantService.getByName("Роза");
 
 //        UserContext.setUsername("admin");
 //        plantService.addPlant(new Plant("Роза", "Цветок"));

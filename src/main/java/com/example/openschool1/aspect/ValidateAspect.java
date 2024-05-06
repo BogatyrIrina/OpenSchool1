@@ -1,7 +1,7 @@
 package com.example.openschool1.aspect;
 
 import com.example.openschool1.model.Plant;
-import com.example.openschool1.model.PlantException;
+import com.example.openschool1.exception.PlantException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
